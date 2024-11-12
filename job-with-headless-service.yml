@@ -11,6 +11,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: example-job
+  namespace: pods
 spec:
   completions: 3 # Total number of successful pod completions needed
   parallelism: 3 # Number of pods running in parallel
