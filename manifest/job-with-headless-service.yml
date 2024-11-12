@@ -12,8 +12,8 @@ kind: Job
 metadata:
   name: example-job
 spec:
-  completions: 3  # Total number of successful pod completions needed
-  parallelism: 3  # Number of pods running in parallel
+  completions: 2  # Total number of successful pod completions needed
+  parallelism: 2  # Number of pods running in parallel
   completionMode: Indexed  # Ensure pods are indexed (0, 1, 2...)
   template:
     spec:
@@ -30,7 +30,7 @@ spec:
           echo "Waiting for other pods to be ready..."
           sleep 5
           # Loop through the pods and ping each other
-          for i in 0 1 2
+          for i in 0 1
           do
             # Wait until the pod we're trying to ping is reachable
             while ! ping -c 1 example-job-${i}.headless-svc &>/dev/null
